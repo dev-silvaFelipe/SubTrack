@@ -42,4 +42,14 @@ class DBhelper (context: Context) :
         db.execSQL("DROP TABLE IF EXISTS utilizador")
         onCreate(db)
     }
+    fun validarLogin(username: String, pass: String): Boolean {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(
+            "SELECT * FROM utilizador WHERE username=? AND password=?",
+            arrayOf(username, pass)
+        )
+        val existe = cursor.count > 0
+        cursor.close()
+        return existe
+    }
 }
