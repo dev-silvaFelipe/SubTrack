@@ -29,6 +29,18 @@
             android:name=".MainActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".CadastroActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DetalhesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".EditarActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

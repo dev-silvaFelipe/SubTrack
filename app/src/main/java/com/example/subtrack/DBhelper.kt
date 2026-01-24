@@ -52,4 +52,58 @@ class DBhelper (context: Context) :
         cursor.close()
         return existe
     }
+    fun listarAssinaturas(usuarioId: Int): List<Assinatura> {
+        val lista = ArrayList<Assinatura>()
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM assinaturas WHERE usuario_id = ?", arrayOf(usuarioId.toString()))
+
+        if (cursor.moveToFirst()) {
+            do {
+                val id = cursor.getInt(cursor.getColumnIndexOrThrow("id"))
+                val nome = cursor.getString(cursor.getColumnIndexOrThrow("nome"))
+                val valor = cursor.getDouble(cursor.getColumnIndexOrThrow("valor"))
+                val userId = cursor.getInt(cursor.getColumnIndexOrThrow("usuario_id"))
+                lista.add(Assinatura(id, nome, valor, userId))
+            } while (cursor.moveToNext())
+        }
+        cursor.close()
+        return lista
+    }
+    fun inserirAssinatura(assinatura: Assinatura): Long {
+        val db = this.writableDatabase
+        val contentValues = android.content.ContentValues()
+        contentValues.put("nome", assinatura.nome)
+        contentValues.put("valor", assinatura.valor)
+        contentValues.put("usuario_id", assinatura.usuarioId)
+
+        val id = db.insert("assinaturas", null, contentValues)
+        db.close()
+        return id
+    }
+    fun obterAssinatura(id: Int): Assinatura? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM assinaturas WHERE id = ?", arrayOf(id.toString()))
+        var assinatura: Assinatura? = null
+        if (cursor.moveToFirst()) {
+            val nome = cursor.getString(cursor.getColumnIndexOrThrow("nome"))
+            val valor = cursor.getDouble(cursor.getColumnIndexOrThrow("valor"))
+            val userId = cursor.getInt(cursor.getColumnIndexOrThrow("usuario_id"))
+            assinatura = Assinatura(id, nome, valor, userId)
+        }
+        cursor.close()
+        return assinatura
+    }
+
+    fun deletarAssinatura(id: Int): Int {
+        val db = this.writableDatabase
+        return db.delete("assinaturas", "id = ?", arrayOf(id.toString()))
+    }
+    fun atualizarAssinatura(assinatura: Assinatura): Int {
+        val db = this.writableDatabase
+        val contentValues = android.content.ContentValues()
+        contentValues.put("nome", assinatura.nome)
+        contentValues.put("valor", assinatura.valor)
+
+        return db.update("assinaturas", contentValues, "id = ?", arrayOf(assinatura.id.toString()))
+    }
 }
