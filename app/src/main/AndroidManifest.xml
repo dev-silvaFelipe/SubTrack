@@ -29,6 +29,9 @@
             android:name=".MainActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".CadastroActivity"
+            android:exported="false" />
     </application>
 
 </manifest>
