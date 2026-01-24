@@ -80,4 +80,22 @@ class DBhelper (context: Context) :
         db.close()
         return id
     }
+    fun obterAssinatura(id: Int): Assinatura? {
+        val db = this.readableDatabase
+        val cursor = db.rawQuery("SELECT * FROM assinaturas WHERE id = ?", arrayOf(id.toString()))
+        var assinatura: Assinatura? = null
+        if (cursor.moveToFirst()) {
+            val nome = cursor.getString(cursor.getColumnIndexOrThrow("nome"))
+            val valor = cursor.getDouble(cursor.getColumnIndexOrThrow("valor"))
+            val userId = cursor.getInt(cursor.getColumnIndexOrThrow("usuario_id"))
+            assinatura = Assinatura(id, nome, valor, userId)
+        }
+        cursor.close()
+        return assinatura
+    }
+
+    fun deletarAssinatura(id: Int): Int {
+        val db = this.writableDatabase
+        return db.delete("assinaturas", "id = ?", arrayOf(id.toString()))
+    }
 }

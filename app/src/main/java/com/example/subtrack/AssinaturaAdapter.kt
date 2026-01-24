@@ -26,6 +26,13 @@ class AssinaturaAdapter(private val assinaturas: List<Assinatura>) :
         holder.tvNome.text = item.nome
         holder.tvValor.text = "R$ ${String.format("%.2f", item.valor)}"
         holder.tvVencimento.text = "ID: ${item.id}"
+
+        holder.itemView.setOnClickListener {
+            val context = holder.itemView.context
+            val intent = android.content.Intent(context, DetalhesActivity::class.java)
+            intent.putExtra("ASSINATURA_ID", item.id)
+            context.startActivity(intent)
+        }
     }
 
     override fun getItemCount() = assinaturas.size
