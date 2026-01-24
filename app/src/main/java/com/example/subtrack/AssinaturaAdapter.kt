@@ -30,7 +30,12 @@ class AssinaturaAdapter(private val assinaturas: List<Assinatura>) :
         holder.itemView.setOnClickListener {
             val context = holder.itemView.context
             val intent = android.content.Intent(context, DetalhesActivity::class.java)
+
             intent.putExtra("ASSINATURA_ID", item.id)
+            intent.putExtra("ASSINATURA_NOME", item.nome)
+            intent.putExtra("ASSINATURA_VALOR", item.valor)
+            intent.putExtra("USER_ID", item.usuarioId)
+
             context.startActivity(intent)
         }
     }
