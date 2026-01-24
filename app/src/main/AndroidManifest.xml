@@ -37,6 +37,10 @@
             android:name=".DetalhesActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".EditarActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

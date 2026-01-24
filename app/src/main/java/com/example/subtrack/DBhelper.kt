@@ -98,4 +98,12 @@ class DBhelper (context: Context) :
         val db = this.writableDatabase
         return db.delete("assinaturas", "id = ?", arrayOf(id.toString()))
     }
+    fun atualizarAssinatura(assinatura: Assinatura): Int {
+        val db = this.writableDatabase
+        val contentValues = android.content.ContentValues()
+        contentValues.put("nome", assinatura.nome)
+        contentValues.put("valor", assinatura.valor)
+
+        return db.update("assinaturas", contentValues, "id = ?", arrayOf(assinatura.id.toString()))
+    }
 }
