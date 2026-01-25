@@ -2,14 +2,16 @@ package com.example.subtrack
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.Locale
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +26,8 @@ class MainActivity : AppCompatActivity() {
         usuarioId = intent.getIntExtra("USER_ID", 0)
 
         recyclerView = findViewById(R.id.recyclerView)
-        val fab = findViewById<FloatingActionButton>(R.id.fabAdd)
+
+        val fab = findViewById<ExtendedFloatingActionButton>(R.id.fabAdd)
 
         recyclerView.layoutManager = LinearLayoutManager(this)
 
@@ -46,6 +49,10 @@ class MainActivity : AppCompatActivity() {
                 if (response.isSuccessful && response.body() != null) {
                     val listaTodas = response.body()!!
                     val listaFiltrada = listaTodas.filter { it.usuarioId == usuarioId }
+
+                    val total = listaFiltrada.sumOf { it.valor }
+                    val tvTotal = findViewById<TextView>(R.id.tvTotalGasto)
+                    tvTotal.text = String.format(Locale("pt", "BR"), "R$ %.2f", total)
 
                     adapter = AssinaturaAdapter(listaFiltrada)
                     recyclerView.adapter = adapter
