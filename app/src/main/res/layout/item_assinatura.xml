@@ -1,66 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    app:cardCornerRadius="20dp"
-    app:cardElevation="2dp"
-    app:strokeWidth="0dp"
-    android:clickable="true"
-    android:focusable="true"
-    android:foreground="?android:attr/selectableItemBackground">
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:background="?android:attr/selectableItemBackground">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <TextView
+        android:id="@+id/tvNome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="16dp">
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="Netflix" />
 
-        <View
-            android:id="@+id/viewIcon"
-            android:layout_width="48dp"
-            android:layout_height="48dp"
-            android:background="@drawable/bg_icon_placeholder"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="4dp">
 
         <TextView
-            android:id="@+id/tvNome"
+            android:id="@+id/tvValor"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:fontFamily="sans-serif-black"
-            android:text="Netflix"
-            android:textColor="#1E293B"
-            android:textSize="18sp"
-            app:layout_constraintEnd_toStartOf="@+id/tvValor"
-            app:layout_constraintStart_toEndOf="@id/viewIcon"
-            app:layout_constraintTop_toTopOf="@id/viewIcon" />
+            android:layout_weight="1"
+            android:textColor="#4CAF50"
+            android:text="R$ 55.90" />
 
         <TextView
             android:id="@+id/tvVencimento"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Vence dia 15"
-            android:textColor="#64748B"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="@id/viewIcon"
-            app:layout_constraintStart_toStartOf="@id/tvNome" />
+            android:textColor="#757575" />
+    </LinearLayout>
 
-        <TextView
-            android:id="@+id/tvValor"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif-black"
-            android:text="R$ 55,90"
-            android:textColor="#00A859"
-            android:textSize="18sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E0E0E0"
+        android:layout_marginTop="8dp"/>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</com.google.android.material.card.MaterialCardView>
+</LinearLayout>
