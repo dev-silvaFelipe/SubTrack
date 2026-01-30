@@ -34,7 +34,7 @@
             android:layout_marginStart="16dp"
             android:fontFamily="sans-serif-black"
             android:text="Netflix"
-            android:textColor="#1E293B"
+            android:textColor="#FFF"
             android:textSize="18sp"
             app:layout_constraintEnd_toStartOf="@+id/tvValor"
             app:layout_constraintStart_toEndOf="@id/viewIcon"

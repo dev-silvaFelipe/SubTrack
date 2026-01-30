@@ -53,7 +53,7 @@
         android:text="Suas assinaturas"
         android:textSize="18sp"
         android:fontFamily="sans-serif-black"
-        android:textColor="#1E293B"
+        android:textColor="#FFF"
         android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
         app:layout_constraintTop_toBottomOf="@id/cardHeader"

@@ -58,7 +58,7 @@
                 android:background="@android:color/transparent"
                 android:inputType="textCapWords"
                 android:textSize="18sp"
-                android:textColor="#1E293B"
+                android:textColor="#FFF"
                 android:hint="Ex: Disney+"/>
         </LinearLayout>
     </com.google.android.material.card.MaterialCardView>
@@ -110,7 +110,7 @@
                     android:inputType="numberDecimal"
                     android:textSize="20sp"
                     android:textStyle="bold"
-                    android:textColor="#1E293B"
+                    android:textColor="#FFF"
                     android:hint="0,00"/>
             </LinearLayout>
         </LinearLayout>

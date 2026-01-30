@@ -47,7 +47,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Netflix"
-                android:textColor="#1A1A1A"
+                android:textColor="#FFF"
                 android:textSize="26sp"
                 android:textStyle="bold" />
 
